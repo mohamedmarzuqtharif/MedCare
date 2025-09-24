@@ -540,16 +540,16 @@ const MedCareApp = () => {
                   title="Medical SOS"
                 >
                   <span className="absolute inset-0 rounded-full" style={{
-                    boxShadow: '0 0 0 6px rgba(255,255,255,0.6), inset 0 10px 30px rgba(0,0,0,0.25)'
+                    boxShadow: '0 0 0 6px rgba(255,255,255,0.6), inset 0 10px 30px rgba(0,0,0,0.25)',backgroundImage:URL("public/unnamed.png")
                   }} />
                   <span className="absolute -inset-1 rounded-full border-8 border-red-800/40 pointer-events-none"></span>
                   <div className="relative z-10 text-center select-none">
                     <div className="text-white/90 text-lg font-extrabold tracking-wide">EMERGENCY</div>
                     <div className="mt-2 flex items-center justify-center gap-2">
                       <AlertTriangle className="h-8 w-8 text-white" />
-                      <span className="text-2xl font-black tracking-widest">EMERGENCY</span>
+                      <span className="text-2xl font-black tracking-widest">SOS</span>
                     </div>
-                    <div className="mt-1 text-xs text-white/80">Press in Emergency</div>
+                    <div className="mt-1 text-xs text-white/80">ALERT</div>
                   </div>
                 </button>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full md:w-2/3">
