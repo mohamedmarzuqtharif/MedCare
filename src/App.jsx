@@ -540,7 +540,7 @@ const MedCareApp = () => {
                   title="Medical SOS"
                 >
                   <span className="absolute inset-0 rounded-full" style={{
-                    boxShadow: '0 0 0 6px rgba(255,255,255,0.6), inset 0 10px 30px rgba(0,0,0,0.25)',backgroundImage:URL("public/unnamed.png")
+                    boxShadow: '0 0 0 6px rgba(255,255,255,0.6), inset 0 10px 30px rgba(0,0,0,0.25)'
                   }} />
                   <span className="absolute -inset-1 rounded-full border-8 border-red-800/40 pointer-events-none"></span>
                   <div className="relative z-10 text-center select-none">
