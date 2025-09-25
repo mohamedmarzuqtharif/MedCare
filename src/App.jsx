@@ -404,7 +404,7 @@ const MedCareApp = () => {
 
     useEffect(() => {
       const interval = setInterval(() => {
-        setHeartRate((hr) => Math.max(55, Math.min(120, hr + (Math.random() * 6 - 3))));
+        setHeartRate((hr) => Math.max(55, Math.min(70, hr + (Math.random() * 6 - 3))));
         setSteps((s) => s + Math.floor(Math.random() * 15));
         setSleepQuality((prev) => (Math.random() > 0.95 ? (prev === 'Good' ? 'Average' : 'Good') : prev));
         setConsultations((c) => c + (Math.random() > 0.8 ? 1 : 0));
