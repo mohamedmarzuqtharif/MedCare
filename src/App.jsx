@@ -581,7 +581,7 @@ const MedCareApp = () => {
                   <div className="bg-green-50 p-6 rounded-xl">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-green-600 text-sm font-medium">Vaccines Given</p>
+                        <p className="text-green-600 text-sm font-medium">Vaccines Scheduled</p>
                         <p className="text-3xl font-bold text-green-700 transition-all">{vaccines.toLocaleString()}</p>
                       </div>
                       <Shield className="h-12 w-12 text-green-500" />
@@ -779,7 +779,7 @@ const MedCareApp = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="p-4 rounded-xl border">
                     <h3 className="font-semibold mb-4">Daily Goals</h3>
-                    <div className="flex items-center justify-around">
+                    <div className="flex items-center justify-around flex-wrap gap-4">
                       <ProgressRing value={steps} goal={stepGoal} color="#34d399" label="Steps" />
                       <ProgressRing value={heartPoints} goal={heartPointsGoal} color="#60a5fa" label="Heart Pts" />
                       <ProgressRing value={calories} goal={caloriesGoal} color="#f59e0b" label="Calories" />
