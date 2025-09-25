@@ -12,9 +12,12 @@
     "start": "vite"
   },
   "dependencies": {
+    "i18next": "^25.5.2",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "lucide-react": "^0.263.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "lucide-react": "^0.263.1"
+    "react-i18next": "^15.7.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -23,9 +26,14 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.5"
+    "vite": "^7.1.7"
   },
-  "keywords": ["health", "medical", "react", "dashboard"],
+  "keywords": [
+    "health",
+    "medical",
+    "react",
+    "dashboard"
+  ],
   "author": "MedCare Team",
   "license": "MIT"
 }

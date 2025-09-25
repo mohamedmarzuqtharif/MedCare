@@ -1,0 +1,102 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "vaccine_schedule": "Vaccine Schedule",
+    "nearby_hospitals": "Nearby Hospitals",
+    "medical_news": "Medical News",
+    "smart_watch": "Smart Watch Data",
+    "profile_settings": "Profile & Settings",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Health Dashboard",
+    "emergency": "EMERGENCY",
+    "alert": "ALERT",
+    "sos":"SOS",
+    "whatsapp":"Open WhatsApp Bot",
+    "sms":"Open SMS Bot",
+    "consultations": "Total Consultations",
+    "vaccines_scheduled": "Vaccines Scheduled",
+    "health_alerts": "Health Alerts",
+    "active_users": "Active Users",
+    "med_news":"Medical News",
+    "all_in_med_news":"View All India Medical News"
+  },
+  "profile": {
+    "title": "Profile & Settings",
+    "your_profile": "Your Profile",
+    "change_username": "Change Username",
+    "save_changes": "Save Changes",
+    "emergency_contacts": "Emergency Contacts",
+    "add_new_contact": "Add New Contact",
+    "contact_name": "Contact Name",
+    "phone_number": "Phone Number",
+    "add_contact": "Add Contact",
+    "welcome_message": "Welcome, {{name}}"
+  },
+  "vaccine_schedule": {
+    "title": "Vaccine Schedule & Reminders",
+    "local_camps_title": "Local Area Vaccine Camps",
+    "showing_camps": "Showing upcoming camps",
+    "add_vaccine_title": "Add a New Vaccine Reminder",
+    "vaccine_name_placeholder": "Vaccine name",
+    "phone_placeholder": "Phone (for reminder)",
+    "notes_placeholder": "Notes (optional)",
+    "add_record_button": "Add Record",
+    "your_records_title": "Your Vaccine Records",
+    "due_date": "Due",
+    "completed_button": "Completed",
+    "mark_as_done_button": "Mark as Done",
+    "whatsapp_button": "WhatsApp",
+    "sms_button": "SMS",
+    "remove_button": "Remove",
+    "no_records": "No vaccine records yet. Add one above.",
+    "notes_label": "Notes:",
+    "contact_label": "Contact:",
+    "reminder_prefix": "Reminder:",
+    "scheduled_on": "is scheduled on",
+    "not_applicable": "N/A",
+    "status_completed": "Completed",
+    "mark_as_done": "Mark as Done"
+  },
+  "content_data": {
+  "vaccines": {
+    "covid_booster": "COVID-19 Booster",
+    "influenza_shot": "Influenza Shot",
+    "dpt_booster": "DPT Booster",
+    "polio_drive": "Polio (OPV) Drive",
+    "influenza_flu_shot": "Influenza (Flu) Shot"
+  },
+  "venues": {
+    "adyar_phc": "Primary Health Center, Adyar",
+    "t_nagar_uhc": "Urban Health Center, T Nagar",
+    "capital_hospital": "Capital Hospital, Unit 6",
+    "saheed_nagar_cc": "Community Center, Saheed Nagar"
+  },
+  "notes": {
+    "for_child": "For child"
+  }
+},
+  "smartwatch": {
+    "title": "Google Fit Overview",
+    "daily_goals": "Daily Goals",
+    "activity": "Activity",
+    "sleep": "Sleep",
+    "steps": "Steps",
+    "heart_pts": "Heart Pts",
+    "calories": "Calories",
+    "goal": "Goal",
+    "distance": "Distance",
+    "today": "Today",
+    "heart_rate": "Heart Rate",
+    "resting": "Resting",
+    "last_night": "Last night",
+    "target": "Target"
+  },
+  "medical_news": {
+    "title": "India - Medical News"
+  },
+  "nearby_hospitals": {
+    "title": "Nearby Hospitals"
+  }
+}

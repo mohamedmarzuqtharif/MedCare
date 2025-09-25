@@ -1,0 +1,101 @@
+{
+  "sidebar": {
+    "dashboard": "ଡ୍ୟାଶବୋର୍ଡ",
+    "vaccine_schedule": "ଟୀକା ସୂଚୀ",
+    "nearby_hospitals": "ନିକଟସ୍ଥ ହସପିଟାଲ",
+    "medical_news": "ଡାକ୍ତରୀ ସମ୍ବାଦ",
+    "smart_watch": "ସ୍ମାର୍ଟ ୱାଚ୍ ଡାଟା",
+    "profile_settings": "ପ୍ରୋଫାଇଲ୍ ଓ ସେଟିଂସ୍",
+    "logout": "ଲଗଆଉଟ୍"
+  },
+  "dashboard": {
+    "title": "ସ୍ୱାସ୍ଥ୍ୟ ଡ୍ୟାଶବୋର୍ଡ",
+    "emergency": "ଜରୁରୀକାଳୀନ",
+    "alert": "ସତର୍କ",
+    "sos":"ଏସ୍ ଓ ଏସ୍",
+    "whatsapp": "ୱାଟ୍ସଆପ୍ ବଟ୍ ଖୋଲନ୍ତୁ",
+    "sms": "ଏସଏମଏସ ବଟ୍ ଖୋଲନ୍ତୁ",
+    "consultations": "ମୋଟ ପରାମର୍ଶ",
+    "vaccines_scheduled": "ଟୀକା ସୂଚୀଭୁକ୍ତ",
+    "health_alerts": "ସ୍ୱାସ୍ଥ୍ୟ ସତର୍କତା",
+    "active_users": "ସକ୍ରିୟ ବ୍ୟବହାରକାରୀ",
+    "med_news":"ମେଡିକାଲ୍ ନ୍ୟୁଜ୍",
+    "all_in_med_news":"ଅଲ୍ ଇଣ୍ଡିଆ ମେଡିକାଲ୍ ନ୍ୟୁଜ୍ ଦେଖନ୍ତୁ"
+  },
+  "profile": {
+    "title": "ପ୍ରୋଫାଇଲ୍ ଓ ସେଟିଂସ୍",
+    "your_profile": "ଆପଣଙ୍କ ପ୍ରୋଫାଇଲ୍",
+    "change_username": "ବ୍ୟବହାରକାରୀ ନାମ ପରିବର୍ତ୍ତନ କରନ୍ତୁ",
+    "save_changes": "ପରିବର୍ତ୍ତନ ସେଭ୍ କରନ୍ତୁ",
+    "emergency_contacts": "ଜରୁରୀକାଳୀନ ସମ୍ପର୍କ",
+    "add_new_contact": "ନୂଆ ସମ୍ପର୍କ ଯୋଡନ୍ତୁ",
+    "contact_name": "ସମ୍ପର୍କ ନାମ",
+    "phone_number": "ଫୋନ୍ ନମ୍ବର",
+    "add_contact": "ସମ୍ପର୍କ ଯୋଡନ୍ତୁ",
+    "welcome_message": "ସ୍ଵାଗତ, {{name}}"
+  },
+  "vaccine_schedule": {
+    "title": "ଟୀକା ସୂଚୀ ଏବଂ ସ୍ମାରକ",
+    "local_camps_title": "ସ୍ଥାନୀୟ ଅଞ୍ଚଳ ଟୀକା କ୍ୟାମ୍ପ",
+    "showing_camps": "ଆଗାମୀ କ୍ୟାମ୍ପଗୁଡିକ ଦେଖାଉଛି",
+    "add_vaccine_title": "ଏକ ନୂଆ ଟୀକା ସ୍ମାରକ ଯୋଡନ୍ତୁ",
+    "vaccine_name_placeholder": "ଟୀକାର ନାମ",
+    "phone_placeholder": "ଫୋନ୍ (ସ୍ମାରକ ପାଇଁ)",
+    "notes_placeholder": "ଟିପ୍ପଣୀ (ବୈକଳ୍ପିକ)",
+    "add_record_button": "ରେକର୍ଡ ଯୋଡନ୍ତୁ",
+    "your_records_title": "ଆପଣଙ୍କ ଟୀକା ରେକର୍ଡ",
+    "due_date": "ଦେୟ ତାରିଖ",
+    "completed_button": "ସମାପ୍ତ",
+    "mark_as_done_button": "ସମାପ୍ତ ଚିହ୍ନିତ କରନ୍ତୁ",
+    "whatsapp_button": "ୱାଟ୍ସଆପ୍",
+    "sms_button": "ଏସଏମଏସ",
+    "remove_button": "ହଟାନ୍ତୁ",
+    "no_records": "କୌଣସି ଟୀକା ରେକର୍ଡ ନାହିଁ। ଉପରେ ଗୋଟିଏ ଯୋଡନ୍ତୁ।",
+    "notes_label": "ଟିପ୍ପଣୀ:",
+    "contact_label": "ସମ୍ପର୍କ:",
+    "reminder_prefix": "ସ୍ମାରକ:",
+    "scheduled_on": "ରେ ସୂଚୀଭୁକ୍ତ",
+    "not_applicable": "ପ୍ରଯୁଜ୍ୟ ନୁହେଁ",
+    "status_completed": "ସମାପ୍ତ",
+    "mark_as_done": "ସମାପ୍ତ ଚିହ୍ନିତ କରନ୍ତୁ"
+  },"content_data": {
+  "vaccines": {
+    "covid_booster": "କୋଭିଡ-୧୯ ବୁଷ୍ଟର୍",
+    "influenza_shot": "ଇନ୍‌ଫ୍ଲୁଏଞ୍ଜା ଶଟ୍",
+    "dpt_booster": "ଡିପିଟି ବୁଷ୍ଟର୍",
+    "polio_drive": "ପୋଲିଓ (ଓପିଭି) ଡ୍ରାଇଭ୍",
+    "influenza_flu_shot": "ଇନ୍‌ଫ୍ଲୁଏଞ୍ଜା (ଫ୍ଲୁ) ଶଟ୍"
+  },
+  "venues": {
+    "adyar_phc": "ପ୍ରାଥମିକ ସ୍ୱାସ୍ଥ୍ୟ କେନ୍ଦ୍ର, ଆଡାୟାର",
+    "t_nagar_uhc": "ସହରାଞ୍ଚଳ ସ୍ୱାସ୍ଥ୍ୟ କେନ୍ଦ୍ର, ଟି ନଗର",
+    "capital_hospital": "କ୍ୟାପିଟାଲ୍ ହସ୍ପିଟାଲ୍, ୟୁନିଟ୍ ୬",
+    "saheed_nagar_cc": "କମ୍ୟୁନିଟି ସେଣ୍ଟର, ସହିଦ ନଗର"
+  },
+  "notes": {
+    "for_child": "ପିଲା ପାଇଁ"
+  }
+},
+  "smartwatch": {
+    "title": "ଗୁଗୁଲ୍ ଫିଟ୍ ବିବରଣୀ",
+    "daily_goals": "ଦୈନିକ ଲକ୍ଷ୍ୟ",
+    "activity": "କାର୍ଯ୍ୟକଳାପ",
+    "sleep": "ନିଦ",
+    "steps": "ପଦକ୍ଷେପ",
+    "heart_pts": "ହାର୍ଟ ପଏଣ୍ଟ",
+    "calories": "କ୍ୟାଲୋରୀ",
+    "goal": "ଲକ୍ଷ୍ୟ",
+    "distance": "ଦୂରତା",
+    "today": "ଆଜି",
+    "heart_rate": "ହୃଦସ୍ପନ୍ଦନ",
+    "resting": "ବିଶ୍ରାମ",
+    "last_night": "ଗତ ରାତି",
+    "target": "ଲକ୍ଷ୍ୟ"
+  },
+  "medical_news": {
+    "title": "ଭାରତ - ଡାକ୍ତରୀ ସମ୍ବାଦ"
+  },
+  "nearby_hospitals": {
+    "title": "ନିକଟସ୍ଥ ହସପିଟାଲ"
+  }
+}
