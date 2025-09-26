@@ -97,5 +97,33 @@
   },
   "nearby_hospitals": {
     "title": "ନିକଟସ୍ଥ ହସପିଟାଲ"
+  },
+  "sos": {
+    "emergency_alert": "ଜରୁରୀକାଳୀନ ସତର୍କତା",
+    "countdown_message": "ଜରୁରୀକାଳୀନ ସେବା ସମ୍ପର୍କ ହେବ",
+    "yes_emergency": "ହଁ, ଜରୁରୀକାଳୀନ",
+    "no_cancel": "ନାହିଁ, ବାତିଲ୍ କରନ୍ତୁ",
+    "processing_emergency": "ଜରୁରୀକାଳୀନ ଅନୁରୋଧ ପ୍ରକ୍ରିୟାକରଣ...",
+    "calling_emergency": "ଜରୁରୀକାଳୀନ ସେବା କଲ୍ କରୁଛି",
+    "emergency_number": "ଜରୁରୀକାଳୀନ ନମ୍ବର",
+    "location": "ଅବସ୍ଥାନ",
+    "location_unavailable": "ଅବସ୍ଥାନ ଉପଲବ୍ଧ ନାହିଁ",
+    "contacts_notified": "ସମ୍ପର୍କଗୁଡିକୁ ସୂଚନା ଦିଆଯାଇଛି",
+    "close": "ବନ୍ଦ କରନ୍ତୁ",
+    "emergency_contacts": "ଜରୁରୀକାଳୀନ ସମ୍ପର୍କ",
+    "add_contact": "ସମ୍ପର୍କ ଯୋଡନ୍ତୁ",
+    "add_new_contact": "ନୂଆ ସମ୍ପର୍କ ଯୋଡନ୍ତୁ",
+    "contact_name": "ସମ୍ପର୍କ ନାମ",
+    "phone_number": "ଫୋନ୍ ନମ୍ବର",
+    "relationship": "ସମ୍ପର୍କ",
+    "enter_name": "ସମ୍ପର୍କ ନାମ ଲେଖନ୍ତୁ",
+    "enter_phone": "ଫୋନ୍ ନମ୍ବର ଲେଖନ୍ତୁ",
+    "enter_relationship": "ସମ୍ପର୍କ ଲେଖନ୍ତୁ (ବୈକଳ୍ପିକ)",
+    "save_contact": "ସମ୍ପର୍କ ସେଭ୍ କରନ୍ତୁ",
+    "cancel": "ବାତିଲ୍ କରନ୍ତୁ",
+    "no_contacts": "କୌଣସି ଜରୁରୀକାଳୀନ ସମ୍ପର୍କ ଯୋଡା ଯାଇନାହିଁ",
+    "add_first_contact": "ଉପରେ ଆପଣଙ୍କର ପ୍ରଥମ ଜରୁରୀକାଳୀନ ସମ୍ପର୍କ ଯୋଡନ୍ତୁ",
+    "delete_contact": "ସମ୍ପର୍କ ଡିଲିଟ୍ କରନ୍ତୁ",
+    "confirm_delete_contact": "ଆପଣ ନିଶ୍ଚିତ କି ଏହି ସମ୍ପର୍କକୁ ଡିଲିଟ୍ କରିବାକୁ ଚାହୁଁଛନ୍ତି?"
   }
 }

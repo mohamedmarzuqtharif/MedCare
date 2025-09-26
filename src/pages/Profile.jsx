@@ -1,31 +1,62 @@
-import React, { useState } from 'react';
-import { User, Mail, Phone, Trash2, UserPlus } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { User, Mail, Phone, MapPin, UserPlus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import EmergencyContacts from '../components/EmergencyContacts';
 
 const Profile = ({ user }) => {
-  // State for editable user fields
-  const [username, setUsername] = useState(user.name);
-  
-  // State for emergency contacts
-  const [contacts, setContacts] = useState([
-    { id: 1, name: 'Jane Doe', phone: '123-456-7890' },
-    { id: 2, name: 'Local Clinic', phone: '098-765-4321' },
-  ]);
-  const [newContact, setNewContact] = useState({ name: '', phone: '' });
-
-  const handleAddContact = () => {
-    if (newContact.name && newContact.phone) {
-      setContacts([...contacts, { id: Date.now(), ...newContact }]);
-      setNewContact({ name: '', phone: '' }); // Clear inputs
-    }
-  };
-
-  const handleRemoveContact = (id) => {
-    setContacts(contacts.filter(contact => contact.id !== id));
-  };
   //Translation
   const { t } = useTranslation();
-  
+
+  // State for editable user fields
+  const [username, setUsername] = useState(user.name);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState(user.email || '');
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState('');
+  const [locationEnabled, setLocationEnabled] = useState(true);
+  const [photoDataUrl, setPhotoDataUrl] = useState('');
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem('profile') || '{}');
+    if (stored && Object.keys(stored).length) {
+      setUsername(stored.username || username);
+      setFirstName(stored.firstName || '');
+      setLastName(stored.lastName || '');
+      setEmail(stored.email || email);
+      setAge(stored.age || '');
+      setGender(stored.gender || '');
+      setLocationEnabled(stored.locationEnabled ?? true);
+      setPhotoDataUrl(stored.photoDataUrl || '');
+    }
+  }, []);
+
+  const handleSave = () => {
+    const data = {
+      username,
+      firstName,
+      lastName,
+      email,
+      age,
+      gender,
+      locationEnabled,
+      photoDataUrl,
+    };
+    localStorage.setItem('profile', JSON.stringify(data));
+    localStorage.setItem('userName', username);
+    alert('Profile updated successfully');
+  };
+
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPhotoDataUrl(String(reader.result));
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold text-gray-800">{t('profile.title')}</h2>
@@ -34,13 +65,21 @@ const Profile = ({ user }) => {
       <div className="bg-white p-6 rounded-xl shadow-sm border">
         <h3 className="text-lg font-semibold mb-4 text-gray-700">{t('profile.your_profile')}</h3>
         <div className="flex items-center space-x-4 mb-6">
-          <div className="h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center">
-            <User className="h-8 w-8 text-blue-600" />
+          <div className="h-16 w-16 bg-blue-100 rounded-full overflow-hidden flex items-center justify-center">
+            {photoDataUrl ? (
+              <img src={photoDataUrl} alt="Profile" className="h-full w-full object-cover" />
+            ) : (
+              <User className="h-8 w-8 text-blue-600" />
+            )}
           </div>
           <div>
             <p className="font-bold text-xl text-gray-800">{username}</p>
             <p className="text-gray-500">{user.email}</p>
           </div>
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">Profile Photo</label>
+          <input type="file" accept="image/*" onChange={handlePhotoUpload} />
         </div>
         <div className="space-y-4">
           <div>
@@ -52,53 +91,52 @@ const Profile = ({ user }) => {
               className="w-full md:w-1/2 border rounded-lg px-3 py-2"
             />
           </div>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
-            {t('profile.save_changes')}
-          </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">First Name</label>
+              <input type="text" value={firstName} onChange={(e)=>setFirstName(e.target.value)} className="w-full border rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">Last Name</label>
+              <input type="text" value={lastName} onChange={(e)=>setLastName(e.target.value)} className="w-full border rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
+              <div className="relative">
+                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="w-full border rounded-lg pl-10 pr-3 py-2" />
+                <Mail className="h-4 w-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">Age</label>
+              <input type="number" value={age} onChange={(e)=>setAge(e.target.value)} className="w-full border rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">Gender</label>
+              <select value={gender} onChange={(e)=>setGender(e.target.value)} className="w-full border rounded-lg px-3 py-2">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">Location Sharing</label>
+              <button onClick={()=>setLocationEnabled(!locationEnabled)} className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border ${locationEnabled ? 'bg-emerald-50 border-emerald-300 text-emerald-700' : 'bg-gray-50 border-gray-300 text-gray-700'}`}>
+                <MapPin className="h-4 w-4" /> {locationEnabled ? 'On' : 'Off'}
+              </button>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <button onClick={handleSave} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">Save</button>
+            <button onClick={handleSave} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-lg">Update Profile</button>
+          </div>
         </div>
       </div>
 
       {/* Emergency Contacts Card */}
       <div className="bg-white p-6 rounded-xl shadow-sm border">
-        <h3 className="text-lg font-semibold mb-4 text-gray-700">{t('profile.emergency_contacts')}</h3>
-        <div className="space-y-3 mb-6">
-          {contacts.map(contact => (
-            <div key={contact.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-              <div className="flex items-center space-x-3">
-                <UserPlus className="h-5 w-5 text-gray-500" />
-                <div>
-                  <p className="font-semibold">{contact.name}</p>
-                  <p className="text-sm text-gray-600">{contact.phone}</p>
-                </div>
-              </div>
-              <button onClick={() => handleRemoveContact(contact.id)} className="text-red-500 hover:text-red-700">
-                <Trash2 className="h-5 w-5" />
-              </button>
-            </div>
-          ))}
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-600 mb-2">{t('profile.add_new_contact')}</h4>
-          <div className="flex flex-col md:flex-row gap-3">
-            <input 
-              type="text" 
-              placeholder={t('profile.contact_name')}
-              value={newContact.name}
-              onChange={(e) => setNewContact({...newContact, name: e.target.value})}
-              className="flex-1 border rounded-lg px-3 py-2" 
-            />
-            <input 
-              type="text" 
-              placeholder={t('profile.phone_number')}
-              value={newContact.phone}
-              onChange={(e) => setNewContact({...newContact, phone: e.target.value})}
-              className="flex-1 border rounded-lg px-3 py-2" 
-            />
-            <button onClick={handleAddContact} className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg">
-              {t('profile.add_contact')}
-            </button>
-          </div>
-        </div>
+        <EmergencyContacts />
       </div>
 
        {/* Additional Settings Card 

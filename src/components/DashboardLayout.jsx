@@ -10,6 +10,7 @@ import MedicalNews from '../pages/MedicalNews';
 import Smartwatch from '../pages/Smartwatch';
 import Profile from '../pages/Profile';
 import Assistant from '../components/Assistant';
+import Settings from '../pages/Settings';
 // Import other pages as needed
 
 const DashboardLayout = ({ user, handleLogout }) => {
@@ -30,6 +31,8 @@ const DashboardLayout = ({ user, handleLogout }) => {
         return <Smartwatch />;
       case 'profile':
         return <Profile user={user}/>
+      case 'settings':
+        return <Settings />
       // Add cases for other sections like 'smartwatch'
       default:
         return <div>Select a section</div>;

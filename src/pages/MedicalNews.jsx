@@ -1,20 +1,39 @@
-import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import { ExternalLink, Search } from 'lucide-react';
 
 const MedicalNews = () => {
+  const [q, setQ] = useState('');
   const newsArticles = [
     { t: 'AIIMS launches new telemedicine initiative', s: 'Remote consultations expand access across India.', u: 'https://www.aiims.edu/en.html' },
     { t: 'ICMR updates national immunization guidelines', s: 'Revisions to booster timelines and coverage.', u: 'https://www.icmr.gov.in/' },
+    { t: 'National Health Authority eSanjeevani crosses milestone', s: 'Telemedicine service records millions of consultations.', u: 'https://esanjeevani.in/' },
     { t: 'National campaign on non-communicable diseases', s: 'Focus on diabetes, hypertension, and lifestyle.', u: 'https://www.nhp.gov.in/' },
     { t: 'Govt boosts primary healthcare infrastructure', s: 'New health and wellness centres announced.', u: 'https://www.mohfw.gov.in/' },
+    { t: 'WHO SEARO updates on disease surveillance', s: 'Regional health alerts and guidance for India.', u: 'https://www.who.int/india' },
+    { t: 'CDSCO approvals for essential medicines', s: 'Drug approvals and safety alerts.', u: 'https://cdsco.gov.in/opencms/opencms/en/' },
+    { t: 'Ayushman Bharat-PMJAY updates', s: 'Insurance coverage expansion and empanelments.', u: 'https://pmjay.gov.in/' },
   ];
+
+  const filtered = useMemo(() =>
+    newsArticles.filter(n => (n.t + ' ' + n.s).toLowerCase().includes(q.toLowerCase())),
+  [q]);
 
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-gray-800">India - Medical News</h2>
       <div className="bg-white p-6 rounded-xl shadow-sm border">
+        <div className="mb-4 relative">
+          <input
+            type="text"
+            value={q}
+            onChange={(e)=>setQ(e.target.value)}
+            placeholder="Search India medical news"
+            className="w-full border rounded-lg pl-10 pr-3 py-2"
+          />
+          <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+        </div>
         <div className="space-y-4">
-          {newsArticles.map((n) => (
+          {filtered.map((n) => (
             <article key={n.t} className="p-4 border rounded-lg">
               <div className="flex items-start justify-between">
                 <div>
@@ -34,6 +53,9 @@ const MedicalNews = () => {
               </div>
             </article>
           ))}
+          {filtered.length === 0 && (
+            <div className="text-sm text-gray-600">No results. Try another term.</div>
+          )}
         </div>
       </div>
     </div>

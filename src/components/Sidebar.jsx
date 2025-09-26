@@ -7,6 +7,7 @@ import {
   MapPin,
   Newspaper,
   Watch,
+  Settings as SettingsIcon,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -23,6 +24,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, activeSection, setActiveSection,
     { id: 'hospitals', icon: MapPin, label: t('sidebar.nearby_hospitals') },
     { id: 'news', icon: Newspaper, label: t('sidebar.medical_news') },
     { id: 'smartwatch', icon: Watch, label: t('sidebar.smart_watch') },
+    { id: 'settings', icon: SettingsIcon, label: 'Settings' },
   ];
 
 

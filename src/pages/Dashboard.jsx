@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   AlertTriangle,
@@ -8,8 +8,9 @@ import {
   Shield,
   Bell,
   Activity,
-  Newspaper
+  BarChart3, LineChart, PieChart
 } from 'lucide-react';
+import SOSEmergency from '../components/SOSEmergency';
 
 const Dashboard = ({ setActiveSection }) => {
   // Mock data and handlers specific to the dashboard
@@ -17,24 +18,41 @@ const Dashboard = ({ setActiveSection }) => {
   const vaccines = 856;
   const alerts = 42;
   const activeUsers = 2891;
+  const [showSOSModal, setShowSOSModal] = useState(false);
+  const [showConsultationsModal, setShowConsultationsModal] = useState(false);
+  const [liveData, setLiveData] = useState([]);
+
+  useEffect(() => {
+    if (!showConsultationsModal) return;
+    const interval = setInterval(() => {
+      setLiveData((prev) => {
+        const next = [...prev, { t: Date.now(), v: Math.floor(1000 + Math.random()*200) }];
+        return next.slice(-20);
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [showConsultationsModal]);
+
+  const chartPoints = useMemo(()=> liveData.map((p)=>p.v), [liveData]);
 
   //Translation 
   const { t } = useTranslation();
 
   const handleEmergencySOS = () => {
-    // A more integrated UI element like a modal is better than an alert
-    alert('Emergency SOS Activated! Contacting nearest emergency services and your contacts.');
+    setShowSOSModal(true);
   };
 
   const openWhatsAppBot = () => {
-    window.open('https://wa.me/1234567890?text=Hello%20MedCare%20Bot', '_blank');
+    window.open('https://wa.me/15551414694?text=Hello%20MedCare%20Bot', '_blank');
   };
 
   const openSMSBot = () => {
-    window.open('sms:+1234567890?body=Hello%20MedCare%20Bot', '_blank');
+    // window.open('sms:?body=Hello%20MedCare%20Bot', '_blank');
+    window.alert("Opening SMS bot!");
   };
 
   return (
+    <>
     <div className="space-y-6">
 <h2 className="text-2xl font-bold text-gray-800">{t('dashboard.title')}</h2>
       <div className="flex flex-col items-center gap-6">
@@ -72,7 +90,7 @@ const Dashboard = ({ setActiveSection }) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {/* Metric Cards */}
-          <div className="bg-blue-50 p-6 rounded-xl">
+          <div className="bg-blue-50 p-6 rounded-xl cursor-pointer" onClick={()=>setShowConsultationsModal(true)}>
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-blue-600 text-sm font-medium">{t('dashboard.consultations')}</p>
@@ -110,23 +128,47 @@ const Dashboard = ({ setActiveSection }) => {
           </div>
         </div>
         <div className="w-full md:w-2/3">
-          <div className="card">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <Newspaper className="h-5 w-5 text-gray-700" />
-                <h3 className="font-semibold">{t('dashboard.med_news')}</h3>
-              </div>
+          <div className="bg-white rounded-xl p-4 border">
+            <h3 className="font-semibold mb-3 text-gray-800">Dashboard Visualizations</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button onClick={()=>alert('Show consultations chart')} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium">
+                <BarChart3 className="h-5 w-5" /> {t('dashboard.consultations')}
+              </button>
+              <button onClick={()=>alert('Show vaccines chart')} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-green-50 hover:bg-green-100 text-green-700 font-medium">
+                <LineChart className="h-5 w-5" /> {t('dashboard.vaccines_scheduled')}
+              </button>
+              <button onClick={()=>alert('Show health alerts chart')} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 font-medium">
+                <PieChart className="h-5 w-5" /> {t('dashboard.health_alerts')}
+              </button>
             </div>
-            <button
-              onClick={() => setActiveSection('news')}
-              className="w-full px-4 py-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold"
-            >
-              {t('dashboard.all_in_med_news')}
-            </button>
           </div>
         </div>
       </div>
+      
+      {/* SOS Emergency Modal */}
+      <SOSEmergency 
+        isOpen={showSOSModal} 
+        onClose={() => setShowSOSModal(false)} 
+      />
     </div>
+
+    {showConsultationsModal && (
+      <div className="fixed inset-0 bg-black/50 z-50 grid place-items-center">
+        <div className="bg-white rounded-xl p-6 w-[90%] max-w-2xl shadow-2xl">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-800">Live Total Consultations</h3>
+            <button onClick={()=>setShowConsultationsModal(false)} className="px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200">Close</button>
+          </div>
+          <div className="h-48 w-full bg-gray-50 border rounded-lg p-3 flex items-end gap-1 overflow-hidden">
+            {chartPoints.map((v, idx) => (
+              <div key={idx} className="bg-blue-500/70" style={{ width: `${100/Math.max(chartPoints.length,1)}%`, height: `${Math.min(100, (v/1500)*100)}%` }} />
+            ))}
+          </div>
+          <p className="mt-3 text-sm text-gray-500">Updates every second. This is a simple live bar sparkline.</p>
+        </div>
+      </div>
+    )}
+  </>
   );
 };
 

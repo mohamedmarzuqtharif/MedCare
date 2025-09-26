@@ -1,17 +1,64 @@
 import React, { useState } from 'react';
-import { User } from 'lucide-react';
+import { User, Mail, Phone as PhoneIcon, Lock, Repeat, ChevronLeft } from 'lucide-react';
 
 const LoginForm = ({ handleLogin, setCurrentView }) => {
   const [username, setUsername] = useState('');
-  const [contact, setContact] = useState(''); // email or phone
+  const [emailInput, setEmailInput] = useState('');
+  const [phoneInput, setPhoneInput] = useState('');
+  const [stage, setStage] = useState('collect'); // collect | otp | forgot
+  const [otp, setOtp] = useState('');
+  const [otpVerified, setOtpVerified] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const isEmail = (val) => /@/.test(val);
+  const isPhone = (val) => /^\+?\d{10,15}$/.test(val.replace(/\D/g, ''));
+
+  const sendOtp = () => {
+    const contact = emailInput || phoneInput;
+    if (!contact || (!isEmail(contact) && !isPhone(contact))) {
+      setMessage('Please enter a valid email or phone number');
+      return;
+    }
+    setStage('otp');
+    setOtp('');
+    setOtpVerified(false);
+    setMessage(isEmail(contact)
+      ? `OTP has been sent to ${contact}. Check your inbox.`
+      : `OTP has been sent via SMS to ${contact}.`);
+  };
+
+  const verifyOtp = () => {
+    if (/^\d{4}$/.test(otp.trim())) {
+      setOtpVerified(true);
+      setMessage('OTP verified. You can now sign in.');
+      return;
+    }
+    setOtpVerified(false);
+    setMessage('Enter a valid 4-digit OTP.');
+  };
+
+  const resendOtp = () => {
+    setOtp('');
+    sendOtp();
+  };
+
+  const handleForgotSubmit = (e) => {
+    e.preventDefault();
+    if (!forgotEmail || !isEmail(forgotEmail)) {
+      setMessage('Enter a valid email to receive reset link');
+      return;
+    }
+    setMessage(`Password reset link sent to ${forgotEmail}. Check your inbox.`);
+  };
 
   return (
-    <div className="min-h-screen bg-[#F7F1EF] flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
+    <div className="min-h-screen bg-[#F7F1EF] dark:bg-gray-900 flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
         <div className="text-center mb-10">
           <div className="flex items-center justify-center mb-2">
             <img src="/med_logo.jpg" alt="MedCare" className="h-12 w-12 mr-2" />
-            <h1 className="text-4xl font-semibold text-gray-800">MedCare</h1>
+            <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-100">MedCare</h1>
           </div>
           <p className="text-sky-500 font-medium">AI Health care Assistant</p>
         </div>
@@ -19,44 +66,136 @@ const LoginForm = ({ handleLogin, setCurrentView }) => {
           <div className="h-36 w-36 rounded-full bg-sky-800/90 flex items-center justify-center">
             <User className="h-20 w-20 text-white" />
           </div>
-          <h2 className="mt-4 text-3xl font-bold tracking-wide text-sky-900">LOGIN</h2>
+          <h2 className="mt-4 text-3xl font-bold tracking-wide text-sky-900 dark:text-sky-200">LOGIN</h2>
         </div>
-        <div className="space-y-5">
-          <div>
-            <label className="block text-sm font-semibold text-sky-900 mb-2">USERNAME :</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full rounded-full bg-sky-200/70 px-5 py-3 outline-none focus:ring-2 focus:ring-sky-400"
-              placeholder="Enter your username"
-            />
+        {stage === 'collect' && (
+          <div className="space-y-5">
+            <div>
+              <label className="block text-sm font-semibold text-sky-900 dark:text-sky-100 mb-2">USERNAME :</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full rounded-full bg-sky-200/70 px-5 py-3 outline-none focus:ring-2 focus:ring-sky-400"
+                placeholder="Enter your username"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-sky-900 dark:text-sky-100 mb-2">EMAIL ID :</label>
+              <div className="relative">
+                <input
+                  type="email"
+                  value={emailInput}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  className="w-full rounded-full bg-sky-200/70 px-12 py-3 outline-none focus:ring-2 focus:ring-sky-400"
+                  placeholder="Enter email"
+                />
+                <span className="absolute inset-y-0 left-4 flex items-center text-sky-700">
+                  <Mail className="h-5 w-5" />
+                </span>
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-sky-900 dark:text-sky-100 mb-2">PHONE NO :</label>
+              <div className="relative">
+                <input
+                  type="tel"
+                  value={phoneInput}
+                  onChange={(e) => setPhoneInput(e.target.value)}
+                  className="w-full rounded-full bg-sky-200/70 px-12 py-3 outline-none focus:ring-2 focus:ring-sky-400"
+                  placeholder="Enter phone number"
+                />
+                <span className="absolute inset-y-0 left-4 flex items-center text-sky-700">
+                  <PhoneIcon className="h-5 w-5" />
+                </span>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6 pt-2">
+              <button
+                onClick={sendOtp}
+                className="rounded-full bg-sky-300 hover:bg-sky-400 text-sky-900 font-semibold py-3"
+              >
+                Proceed
+              </button>
+              <button
+                onClick={() => setCurrentView('signup')}
+                className="rounded-full bg-sky-300 hover:bg-sky-400 text-sky-900 font-semibold py-3"
+              >
+                SIGN UP
+              </button>
+            </div>
+            <div className="text-center">
+              <button onClick={() => setStage('forgot')} className="text-sky-700 hover:underline font-medium">Forgot Password?</button>
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-sky-900 mb-2">LOGIN WITH EMAIL / PHONE NO :</label>
-            <input
-              type="text"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-              className="w-full rounded-full bg-sky-200/70 px-5 py-3 outline-none focus:ring-2 focus:ring-sky-400"
-              placeholder="Enter email or phone number"
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-6 pt-2">
+        )}
+
+        {stage === 'otp' && (
+          <div className="space-y-5">
+            <button onClick={() => setStage('collect')} className="flex items-center gap-2 text-sm text-sky-700 hover:underline">
+              <ChevronLeft className="h-4 w-4" /> Back
+            </button>
+            <label className="block text-sm font-semibold text-sky-900 dark:text-sky-100">Enter 4-digit OTP sent to {emailInput || phoneInput}</label>
+            <div className="relative">
+              <input
+                type="text"
+                inputMode="numeric"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                className="w-full rounded-full bg-sky-200/70 px-12 py-3 outline-none focus:ring-2 focus:ring-sky-400 tracking-widest text-center"
+                placeholder="----"
+                maxLength={4}
+              />
+              <span className="absolute inset-y-0 left-4 flex items-center text-sky-700">
+                <Lock className="h-5 w-5" />
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-6 pt-2">
+              <button
+                onClick={verifyOtp}
+                className="rounded-full bg-emerald-300 hover:bg-emerald-400 text-emerald-900 font-semibold py-3"
+              >
+                Verify OTP
+              </button>
+              <button
+                onClick={resendOtp}
+                className="rounded-full bg-sky-200 hover:bg-sky-300 text-sky-900 font-semibold py-3 flex items-center justify-center gap-2"
+                title="Resend"
+              >
+                <Repeat className="h-4 w-4" /> Resend OTP
+              </button>
+            </div>
             <button
-              onClick={() => handleLogin(username || contact, 'dummy_password')}
-              className="rounded-full bg-sky-300 hover:bg-sky-400 text-sky-900 font-semibold py-3"
+              disabled={!otpVerified}
+              onClick={() => { const contactVal = emailInput || phoneInput; localStorage.setItem('userName', username || contactVal); handleLogin(username || contactVal, 'otp_verified'); }}
+              className={`mt-3 w-full rounded-full font-semibold py-3 ${otpVerified ? 'bg-sky-300 hover:bg-sky-400 text-sky-900' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}
             >
               SIGN IN
             </button>
-            <button
-              onClick={() => setCurrentView('signup')}
-              className="rounded-full bg-sky-300 hover:bg-sky-400 text-sky-900 font-semibold py-3"
-            >
-              SIGN UP
-            </button>
           </div>
-        </div>
+        )}
+
+        {stage === 'forgot' && (
+          <div className="space-y-5">
+            <button onClick={() => setStage('collect')} className="flex items-center gap-2 text-sm text-sky-700 hover:underline">
+              <ChevronLeft className="h-4 w-4" /> Back
+            </button>
+            <label className="block text-sm font-semibold text-sky-900 dark:text-sky-100">Enter your email to reset password</label>
+            <div className="relative">
+              <input
+                type="email"
+                value={forgotEmail}
+                onChange={(e) => setForgotEmail(e.target.value)}
+                className="w-full rounded-full bg-sky-200/70 px-12 py-3 outline-none focus:ring-2 focus:ring-sky-400"
+                placeholder="email@example.com"
+              />
+              <span className="absolute inset-y-0 left-4 flex items-center text-sky-700">
+                <Mail className="h-5 w-5" />
+              </span>
+            </div>
+            <button onClick={handleForgotSubmit} className="w-full rounded-full bg-sky-300 hover:bg-sky-400 text-sky-900 font-semibold py-3">Send Reset Link</button>
+          </div>
+        )}
         <div className="mt-8">
           <div className="text-center text-gray-700 font-medium mb-3">OR</div>
           <button className="w-full flex items-center justify-center gap-3 rounded-full bg-sky-200/80 hover:bg-sky-300 text-sky-900 font-semibold py-3">
@@ -66,6 +205,10 @@ const LoginForm = ({ handleLogin, setCurrentView }) => {
             Sign in with Google
           </button>
         </div>
+
+        {!!message && (
+          <div className="mt-4 text-center text-sm text-sky-800 dark:text-sky-200">{message}</div>
+        )}
       </div>
     </div>
   );

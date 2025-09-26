@@ -98,5 +98,33 @@
   },
   "nearby_hospitals": {
     "title": "Nearby Hospitals"
+  },
+  "sos": {
+    "emergency_alert": "EMERGENCY ALERT",
+    "countdown_message": "Emergency services will be contacted in",
+    "yes_emergency": "Yes, Emergency",
+    "no_cancel": "No, Cancel",
+    "processing_emergency": "Processing emergency request...",
+    "calling_emergency": "Calling Emergency Services",
+    "emergency_number": "Emergency Number",
+    "location": "Location",
+    "location_unavailable": "Location unavailable",
+    "contacts_notified": "Contacts notified",
+    "close": "Close",
+    "emergency_contacts": "Emergency Contacts",
+    "add_contact": "Add Contact",
+    "add_new_contact": "Add New Contact",
+    "contact_name": "Contact Name",
+    "phone_number": "Phone Number",
+    "relationship": "Relationship",
+    "enter_name": "Enter contact name",
+    "enter_phone": "Enter phone number",
+    "enter_relationship": "Enter relationship (optional)",
+    "save_contact": "Save Contact",
+    "cancel": "Cancel",
+    "no_contacts": "No emergency contacts added",
+    "add_first_contact": "Add your first emergency contact above",
+    "delete_contact": "Delete Contact",
+    "confirm_delete_contact": "Are you sure you want to delete this contact?"
   }
 }
