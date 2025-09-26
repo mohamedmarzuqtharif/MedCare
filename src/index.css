@@ -41,6 +41,28 @@
 }
 
 @layer utilities {
+  .theme-medical {
+    --mc-accent: #0ea5e9; /* sky-500 */
+    --mc-accent-dark: #0369a1; /* sky-700 */
+    --mc-success: #10b981; /* emerald */
+    --mc-warning: #f59e0b; /* amber */
+    --mc-danger: #ef4444; /* red */
+  }
+  .accent-med {
+    @apply text-sky-700;
+  }
+  .badge-med {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 text-xs border border-sky-200;
+  }
+  .bg-health {
+    @apply bg-gradient-to-r from-sky-50 to-emerald-50;
+  }
+  .border-health {
+    @apply border-sky-200;
+  }
+  .text-health {
+    @apply text-sky-800;
+  }
   .text-gradient {
     @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
   }

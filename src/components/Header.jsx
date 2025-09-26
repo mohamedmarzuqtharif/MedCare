@@ -23,7 +23,7 @@ const Header = ({ setSidebarOpen, user, setActiveSection }) => {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+    <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 py-4">
       <div className="flex items-center justify-between">
         {/* Hamburger Menu for mobile */}
         <button onClick={() => setSidebarOpen(true)} className="lg:hidden">
@@ -34,7 +34,7 @@ const Header = ({ setSidebarOpen, user, setActiveSection }) => {
         <div className="flex-1" />
 
         {/* Right-side Icons */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
             <LanguageSwitcher />
           <button
             onClick={toggleTheme}

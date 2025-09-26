@@ -54,7 +54,7 @@ const LoginForm = ({ handleLogin, setCurrentView }) => {
 
   return (
     <div className="min-h-screen bg-[#F7F1EF] dark:bg-gray-900 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-8">
         <div className="text-center mb-10">
           <div className="flex items-center justify-center mb-2">
             <img src="/med_logo.jpg" alt="MedCare" className="h-12 w-12 mr-2" />
@@ -63,7 +63,7 @@ const LoginForm = ({ handleLogin, setCurrentView }) => {
           <p className="text-sky-500 font-medium">AI Health care Assistant</p>
         </div>
         <div className="flex flex-col items-center mb-8">
-          <div className="h-36 w-36 rounded-full bg-sky-800/90 flex items-center justify-center">
+          <div className="h-28 w-28 sm:h-36 sm:w-36 rounded-full bg-sky-800/90 flex items-center justify-center">
             <User className="h-20 w-20 text-white" />
           </div>
           <h2 className="mt-4 text-3xl font-bold tracking-wide text-sky-900 dark:text-sky-200">LOGIN</h2>

@@ -74,7 +74,7 @@ const Dashboard = ({ setActiveSection }) => {
             <div className="mt-1 text-xs text-white/80">{t('dashboard.alert')}</div>
           </div>
         </button>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full md:w-2/3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full md:w-2/3">
           <button
             onClick={openWhatsAppBot}
             className="bg-green-600 hover:bg-green-700 text-white rounded-xl px-6 py-4 font-semibold flex items-center justify-center gap-2"
@@ -88,7 +88,7 @@ const Dashboard = ({ setActiveSection }) => {
             <Phone className="h-5 w-5" /> {t('dashboard.sms')}
           </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
           {/* Metric Cards */}
           <div className="bg-blue-50 p-6 rounded-xl cursor-pointer" onClick={()=>setShowConsultationsModal(true)}>
             <div className="flex items-center justify-between">
